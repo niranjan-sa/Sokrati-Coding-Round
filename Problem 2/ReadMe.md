@@ -10,5 +10,6 @@
 * Only one customer consecutive visitor
 * Many customeres consecutive visitors
 
-# Output
-Array List containing the customer ids of the customers that visit the site for 4 consecutive days
+# Output (for the given file log.txt)
+The following customers visited the site for 4 consecutive days :-   
+[3, 9]
