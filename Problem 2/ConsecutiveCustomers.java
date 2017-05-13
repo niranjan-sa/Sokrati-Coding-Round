@@ -76,7 +76,7 @@ public class ConsecutiveCustomers {
 	//Reader function 
 	private static void readInput() throws IOException, ParseException {
 		//Open the file 
-		File log = new File("C:/Users/Niranjan_Agnihotri/Desktop/Sokrati Coding Round/log.txt");
+		File log = new File("log.txt");
 		
 		//Checking the file
 		if(!log.exists()) {

@@ -20,35 +20,35 @@ import java.util.Set;
 
 //utility class each item is an object of Node class
 class Node {
-	//count variable to note the count the occurrences
-	private int count;
+	//count variable to note the count the occurrences 
+	private int count;	
 	//stores the links to the objects in the next level
 	private HashMap<String, Node> data;
-
+	
 	//constructor
 	public Node() {
 		super();
 		this.count = 1;
 		data = new HashMap<String, Node>();
 	}
-
+	
 	//getters setters
 	public HashMap<String, Node> getData(){
 		return data;
 	}
-
+	
 	public int getCount() {
 		return count;
 	}
-
+	
 	public void increment() {
 		this.count++;
 	}
-
+	
 	public void setCount(int count) {
 		this.count = count;
 	}
-
+	
 	public void addNew(String token, Node node) {
 		this.data.put(token, node);
 	}
@@ -57,12 +57,12 @@ class Node {
 
 //main driver class
 public class TaxonomicData {
-
+	
 	//to store the top level items
-	private static HashMap<String, Node> data =
+	private static HashMap<String, Node> data = 
 				new HashMap<String, Node>();
-
-	//main driver function
+	
+	
 	public static void main(String[] args) throws IOException {
 		//reads the data and construct the data structure
 		readData();
@@ -70,7 +70,6 @@ public class TaxonomicData {
 		queryResults();
 	}
 
-    //function to query the results
 	private static void queryResults() {
 		//repeat till user wants to exit
 		while(true) {
@@ -89,11 +88,11 @@ public class TaxonomicData {
 					sc.nextLine();
 					String token = sc.nextLine();
 					String []tokens = token.split(" > ");
-
+					
 					//access the top level hashmap
 					HashMap<String, Node> tmp = data;
 					Node node = null;
-
+					
 					//For all the tokens traversing down the trie
 					for(String temp : tokens) {
 						temp = temp.trim();
@@ -116,35 +115,35 @@ public class TaxonomicData {
 
 	//Reads the file and builds the data structure
 	private static void readData() throws IOException {
-			//Open the file
-			File log = new File("C:/Users/Niranjan_Agnihotri/Desktop/Sokrati Coding Round/data.txt");
+			//Open the file 
+			File log = new File("data.txt");
 			//Checking the file
 			if(!log.exists()) {
 				System.out.println("No File");
 				return;
 			}
-
+					
 			//Open connection to the file
-			BufferedReader br =
+			BufferedReader br = 
 						new BufferedReader(new FileReader(log));
-
+				
 			String thisLine = null;
-
+			
 			//Reading the output line by line and building the data structure
 			while((thisLine = br.readLine()) != null) {
 				//Split by tab delimiter
 				String []tokens = thisLine.split(" > ");
-
+				
 				//trimming the keys
 				for(int i=0; i<tokens.length; i++) {
 					tokens[i] = tokens[i].trim();
 				}
-
+				
 				HashMap<String, Node> temp = data;
-
+				
 				//for all the tokens in the line perform insert operation
 				for(String token : tokens) {
-
+					
 					if(temp.keySet().contains(token)) {
 						//if already seen the key increment the occurrence count
 						((Node)temp.get(token)).increment();
@@ -157,18 +156,18 @@ public class TaxonomicData {
 						temp.put(token, node);
 						temp = node.getData();
 					}
-				}
-			}
-
+				}	
+			}	
+			
 			//for debugging
 			//System.out.println(data);
 			//parseData(data);
-
+			
 			//close the resourse
 			br.close();
-
+		
 	}
-
+	
 	//function created to view the entire data structure
 	//debugging purpose
 	private static void parseData(HashMap<String, Node> data) {
